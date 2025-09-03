@@ -2,7 +2,7 @@
 
 ## Objective
 
-This DFIR-based home lab project aimed to establish a controlled environment for simulating and detecting various types of cyber attacks. The primary focus was to ingest and analyze logs within a Security Information and Event Management (SIEM) system and simulate scenarios from basic learning scenarios to imitating real world scenarios. In this part of the project, I will be simulating an attack scenario by infecting a domain controller in an isolated environment and introducing the general concept and process of basic malware analysis, as well as learning the tools used for malware forensics.
+This DFIR-based home lab series of projects aims to establish a controlled environment for simulating and detecting various types of cyber attacks. The primary focus was to ingest and analyze logs within a Security Information and Event Management (SIEM) system and simulate scenarios from basic learning scenarios to imitating real world scenarios. In this part of the project, I will be simulating an attack scenario by infecting a domain controller in an isolated environment and introducing the general concept and process of basic malware analysis, as well as learning the tools used for malware forensics.
 
 ### Skills Learned
 

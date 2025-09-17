@@ -26,5 +26,10 @@ In the last scenario, I introduced malware analysis and how a machine could be i
 **Acquiring the Sample**
 Before even conducting an analysis, I'll need to figure out a way to actually grab the malware sample. Luckily for me, [Vxunderground](https://vx-underground.org/) is a public database with the sole purpose of archiving malware samples for educational use, which is where I grabbed the sample for Redline Stealer, a windows-based malware with the purpose of extracting credentials from browsers and other various areas of the system. Even though I have a description of what the malware does, I want to know exactly what the malware is doing in a practical scenario, that way I know exactly what the malware compromised, and potentially find ways to mitigate the threat in a timely manner.
 
+<img src="https://i.imgur.com/KvFYPro.png" width="500" height="1000" />
 
+Before even unzipping the downloaded folder, since this malware is oriented towards Windows, it is best that I transfer the file to my FlareVM machine, as not only is it based on Windows 10 Enterprise, but it is also completely isolated from my network, meaning it has no way of escaping my isolated VM through a network connection.
 
+<img src="https://i.imgur.com/0OSmzY2.png" width="500" height="1000" />
+
+<img src="https://i.imgur.com/3yosolZ.png" width="500" height="1000" />

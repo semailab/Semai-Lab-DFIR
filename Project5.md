@@ -1,4 +1,4 @@
-# Semai Lab DFIR: Simulating and Detecting an Attack - Scenario 4: Malware Analysis w/ Redline Stealer
+<img width="1397" height="367" alt="image" src="https://github.com/user-attachments/assets/db616a5c-54f5-4968-9496-05189ffdb5b1" /># Semai Lab DFIR: Simulating and Detecting an Attack - Scenario 4: Malware Analysis w/ Redline Stealer
 
 ## Objective
 
@@ -119,3 +119,13 @@ The method decrypts data from the Chromium-based browser, including its stored v
 
 The rest are methods used to find the exact roaming directory needed for the attack, which were less interesting than my current findings.
 
+**Browsers: Gecko**
+A "GeckoDatabase" method converting bit data to string data.
+
+<img src="https://i.imgur.com/KY8FoaD.png" width="500" height="1000" />
+
+The methods in the "GeckoEngine" method were relatively similar to the Chromium methods, however instead of easily grabbing the data, the program was only able to grab keys, which had to be decrypted using various methods, like the method "GetPrivate3Key".
+
+<img src="https://i.imgur.com/W6TZskg.png" width="500" height="1000" />
+
+<img src="https://i.imgur.com/xyLG3La.png" width="500" height="1000" />

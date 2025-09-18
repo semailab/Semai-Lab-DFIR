@@ -129,3 +129,28 @@ The methods in the "GeckoEngine" method were relatively similar to the Chromium 
 <img src="https://i.imgur.com/W6TZskg.png" width="500" height="1000" />
 
 <img src="https://i.imgur.com/xyLG3La.png" width="500" height="1000" />
+
+"GeckoPasswordBasedEncryption" method specifically for decrypting SHA1 hashes, likely what Gecko uses for password hashes.
+
+<img src="https://i.imgur.com/egkLAEe.png" width="500" height="1000" />
+
+**FTP Services**
+Unfortunately, it seems to me like my Security+ study guide was true about FTP servers not being so secure...who knew it would be that easy to use a couple of variables to exfiltrate "plain-text" data from FileZilla?
+
+<img src="https://i.imgur.com/AvrSGWr.png" width="500" height="1000" />
+
+Seems like WinSCP was a little better. The program was able to only harvest registry key data.....but unfortunately the encyrption algorithms for this data seem weak.
+
+<img src="https://i.imgur.com/jzZxD4g.png" width="500" height="1000" />
+
+<img src="https://i.imgur.com/AzJ4pkq.png" width="500" height="1000" />
+
+Looking at the rest of the files, I couldn't mind anything interesting other than the previous methods, however, I did notice two things that could contribute to some of the malware's behavior.
+
+VM Detector, particularly targetting VirtualBox and VMWare instances:
+
+<img src="https://i.imgur.com/kM8iWmx.png" width="500" height="1000" />
+
+UAC Admin prompt permissions changed
+
+<img src="https://i.imgur.com/OnP0CdJ.png" width="500" height="1000" />

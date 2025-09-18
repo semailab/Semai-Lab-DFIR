@@ -88,3 +88,25 @@ Gcm and IAead Block Cipher Algorithms: Likely used to decipher encryption algori
 Decrypt method for decrypting GCM block ciphers:
 
 <img src="https://i.imgur.com/2EGVnwy.png" width="500" height="1000" />
+
+**Browsers**
+
+Method specifically for Microsoft Edge, but it seems to have nothing directly inside the method, maybe because Edge's engine relies on Chromium now? Nonetheless, it also returns a variable "Browsers" containing the browsers that the malware found using the "ParseBrowsers" variable.
+
+<img src="https://i.imgur.com/I6pvf2q.png" width="500" height="1000" />
+
+**Broswers: ParseBrowsers Method**
+
+The method checks for any browser folders in the "C:\Users\<user>\AppData\Roaming" directory, calls a bunch of methods, and adds the results of every method to a list "browserProfiles".
+
+<img src="https://i.imgur.com/0dJjSsE.png" width="500" height="1000" />
+
+<img src="https://i.imgur.com/rB70pv1.png" width="500" height="1000" />
+
+**Browsers: GetCredentials Method**
+
+The method searches for a "Profile Data" file and collects data from an SQL connection. These values are parsed from the "ReadData" method.
+
+<img src="https://i.imgur.com/EKt7ZfB.png" width="500" height="1000" />
+
+<img src="https://i.imgur.com/xJcFRHv.png" width="500" height="1000" />

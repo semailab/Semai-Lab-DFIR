@@ -1,4 +1,4 @@
-<img width="1397" height="367" alt="image" src="https://github.com/user-attachments/assets/db616a5c-54f5-4968-9496-05189ffdb5b1" /># Semai Lab DFIR: Simulating and Detecting an Attack - Scenario 4: Malware Analysis w/ Redline Stealer
+# Semai Lab DFIR: Simulating and Detecting an Attack - Scenario 4: Malware Analysis w/ Redline Stealer
 
 ## Objective
 

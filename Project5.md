@@ -33,3 +33,58 @@ Before even unzipping the downloaded folder, since this malware is oriented towa
 <img src="https://i.imgur.com/0OSmzY2.png" width="500" height="1000" />
 
 <img src="https://i.imgur.com/3yosolZ.png" width="500" height="1000" />
+
+Unzipping the file, I am met with a bunch of contents related to the malware, up to and including the malware's libraries.
+
+<img src="https://i.imgur.com/pFB6G0w.png" width="500" height="1000" />
+
+<img src="https://i.imgur.com/pFB6G0w.png" width="500" height="1000" />
+
+Importing "build.exe" from the libraries folder provides me with a SHA-256 hash. Plugging this hash into VirusTotal gives us information about RedLine.Client.exe. 
+
+<img src="https://i.imgur.com/ZKzXA5V.png" width="500" height="1000" />
+
+<img src="https://i.imgur.com/h8A2Hr4.png" width="500" height="1000" />
+
+When evaluating the executable's assembly in Ghidra, however, I did not find anything notably interesting.
+
+I did notice when analyzing "builder.exe", that a snippet of code exists where the program utilizes the Microsoft Runtime Execution Engine (MSCOREE.DLL) to import a function called "_CorExeMain".
+
+<img src="https://i.imgur.com/0gBZsTB.png" width="500" height="1000" />
+
+I still could not find anything other than that function import, however, so I pivoted to the last executable file in the Libraries folder, "stub.exe". This is where I started seeing very suspicious functions. With just the function name, however, I could not exactly figure out what the functions were performing. I needed to somehow find more evidence to prove that the functions were actually performing what is specified on their names.
+
+<img src="https://i.imgur.com/OdVWIlP.png" width="500" height="1000" />
+
+<img src="https://i.imgur.com/LTm1DdV.png" width="500" height="1000" />
+
+<img src="https://i.imgur.com/LhATgYH.png" width="500" height="1000" />
+
+<img src="https://i.imgur.com/pdSe7ft.png" width="500" height="1000" />
+
+<img src="https://i.imgur.com/QfuAG2d.png" width="500" height="1000" />
+
+There's a lot more very suspicious functions, however, I would like to evaluate each and every one of them once I get information on what they actually do. For now, I would like to evaluate Redline's main panel and see what it can actually do. There's a lot of UIs about browser contents, IP contents, FTP connections, etc in the actual UI itself. I didn't even realize this program had the potential to steal credit card credentials, I didn't see that in the files I evaluated.
+
+<img src="https://i.imgur.com/ydp766Q.png" width="500" height="1000" />
+
+<img src="https://i.imgur.com/p1nJOk3.png" width="500" height="1000" />
+
+Looking into the malware's config file, we can see a lot more about what those functions from earlier really were about. There's settings about browser grabbing, file grabbing, FTP connection grabbing (most likely to intercept file transfers), and IM clients, which is a pretty interesting addition in my opinion. I do wonder if it would be able to crack signal chats, but it's best for me to not toy around with the malware.
+
+<img src="https://i.imgur.com/6HEOK9v.png" width="500" height="1000" />
+
+After safely detonating the "build.exe" file in FlareVM, I was eventually able to evaluate the new execuatble file in ILSpy and come across many functions related to the file's behavior, which I will start listing now.
+
+**Crypto**
+BouncyCastle AESFastEngine: An engine within the BouncyCastle cryptography library used for AES algorithm implementation.
+
+<img src="https://i.imgur.com/dnphMkB.png" width="500" height="1000" />
+
+Gcm and IAead Block Cipher Algorithms: Likely used to decipher encryption algorithms in order to break into cryptocurrency wallets.
+
+<img src="https://i.imgur.com/gn5J2BK.png" width="500" height="1000" />
+
+Decrypt method for decrypting GCM block ciphers:
+
+<img src="https://i.imgur.com/2EGVnwy.png" width="500" height="1000" />

@@ -110,3 +110,12 @@ The method searches for a "Profile Data" file and collects data from an SQL conn
 <img src="https://i.imgur.com/EKt7ZfB.png" width="500" height="1000" />
 
 <img src="https://i.imgur.com/xJcFRHv.png" width="500" height="1000" />
+
+**Browsers: DecryptChromium and DecryptV10**
+
+The method decrypts data from the Chromium-based browser, including its stored v10 cookies.
+
+<img src="https://i.imgur.com/1o5BTOZ.png" width="500" height="1000" />
+
+The rest are methods used to find the exact roaming directory needed for the attack, which were less interesting than my current findings.
+

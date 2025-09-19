@@ -12,6 +12,7 @@ This DFIR-based home lab series of projects aims to establish a controlled envir
 - Advanced understanding of threat mitigation
 
 ### Tools Used
+
 - Type-2 Hypervisor for Virtual Machine Cluster
 - Windows and Linux machines for various DFIR environments
 - Malware Analysis tools for code decompilation and extensive code analysis
@@ -24,6 +25,7 @@ In the last scenario, I introduced malware analysis and how a machine could be i
 
 
 **Acquiring the Sample**
+
 Before even conducting an analysis, I'll need to figure out a way to actually grab the malware sample. Luckily for me, [Vxunderground](https://vx-underground.org/) is a public database with the sole purpose of archiving malware samples for educational use, which is where I grabbed the sample for Redline Stealer, a windows-based malware with the purpose of extracting credentials from browsers and other various areas of the system. Even though I have a description of what the malware does, I want to know exactly what the malware is doing in a practical scenario, that way I know exactly what the malware compromised, and potentially find ways to mitigate the threat in a timely manner.
 
 <img src="https://i.imgur.com/KvFYPro.png" width="500" height="1000" />
@@ -77,6 +79,7 @@ Looking into the malware's config file, we can see a lot more about what those f
 After safely detonating the "build.exe" file in FlareVM, I was eventually able to evaluate the new execuatble file in ILSpy and come across many functions related to the file's behavior, which I will start listing now.
 
 **Crypto**
+
 BouncyCastle AESFastEngine: An engine within the BouncyCastle cryptography library used for AES algorithm implementation.
 
 <img src="https://i.imgur.com/dnphMkB.png" width="500" height="1000" />
@@ -120,6 +123,7 @@ The method decrypts data from the Chromium-based browser, including its stored v
 The rest are methods used to find the exact roaming directory needed for the attack, which were less interesting than my current findings.
 
 **Browsers: Gecko**
+
 A "GeckoDatabase" method converting bit data to string data.
 
 <img src="https://i.imgur.com/KY8FoaD.png" width="500" height="1000" />
@@ -135,6 +139,7 @@ The methods in the "GeckoEngine" method were relatively similar to the Chromium 
 <img src="https://i.imgur.com/egkLAEe.png" width="500" height="1000" />
 
 **FTP Services**
+
 Unfortunately, it seems to me like my Security+ study guide was true about FTP servers not being so secure...who knew it would be that easy to use a couple of variables to exfiltrate "plain-text" data from FileZilla?
 
 <img src="https://i.imgur.com/AvrSGWr.png" width="500" height="1000" />
@@ -154,3 +159,11 @@ VM Detector, particularly targetting VirtualBox and VMWare instances:
 UAC Admin prompt permissions changed
 
 <img src="https://i.imgur.com/OnP0CdJ.png" width="500" height="1000" />
+
+**Summary**
+
+Based on my findings, I can conclude that this malware is a credential harvester that builds an executable file that can be disguised as a normal executable file, like an installer, detects if it was ran in a VM, modifies UAC admin prompt permissions to bypass UAC, and extracts credentials from FTP services, web browsers, and crypto wallets. The main focus seems to be on web browsers, where session cookies and login information stored on the browser would be sent to the attacker through the malware itself. For any information that was encrypted, multiple decryptors, such as GCM, AES, V10, and SHA1 decryptors were used to decrypt such information and relay it to the attacker. I was a little stumped when trying to figure out where credit card information was being saved, but my best assumption is that since credit card information can be saved on web browsers, the attacker is able to extract credit card details from web browser data, but I unfortunately don't exactly have evidence to support this claim.
+
+**Conclusion**
+
+Malware analysis and reverse-engineering is a pretty powerful skill when trying to evaluate malware behavior. Decompiling malware and evaluating its code provides lots of clues as to what exactly the malware is trying to do, what type of attack its utilizing, and potential hints for mitigating the malware. Of course, this was just a basic analysis, and something like this could easily be avoided by simply using an antivirus or Endpoint Detection and Response (EDR) tool, but I would like to find more clever ways to mitigate malware in the event that antiviruses or EDRs simply aren't enough to get the job done, but that is for another malware analysis scenario. 

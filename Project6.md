@@ -24,3 +24,11 @@ This DFIR-based home lab series of projects aims to establish a controlled envir
 In the last project, we conducted a malware analysis on the Redline Stealer malware. This project has overlap with HackTheBox Sherlock, as I will be going through their "Safecracker" sherlock to learn how to identify various notable areas of malware samples, and how to document them. This project will also be available in the HTBSherlockWriteups section of semailab! (WARNING: If you are following along, isolate a virtual environment, disabling any and all internet access to the machine first before executing any kind of malware. I am not responsible for any damages caused by malware misuse!)
 
 # Task 1: Which user account was utilised for initial access to our company server?
+
+After installing the "safecracker.zip" file provided for us in the challenge, we're met with multiple files pertaining to the sherlock.
+
+<img src="https://i.imgur.com/KvFYPro.png" width="500" height="1000" />
+
+For this question, I immediately navigated to "log.json", and I was met with multiple logs pertaining to the incident. Querying a search for "Users" along with a little bit of scrolling and we can find the first user account the attacker targets. 
+
+<img src="https://i.imgur.com/S1Enmml.png" width="500" height="1000" />

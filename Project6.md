@@ -38,3 +38,6 @@ For this question, I immediately navigated to "log.json", and I was met with mul
 Since we know the account name that the attacker first targeted, let's take a deeper look into that specific user's files in Autopsy! The first place that I decided to look at, which is pretty common for command execution, was the user's PowerShell folder, and to no surprise, a PowerShell log history was found. Opening the PowerShell log gives us the exact command used to escalate to SYSTEM (PSExec is commonly known for Lateral Movement according to [MITRE](https://attack.mitre.org/software/S0029/)).
 
 <img src="https://i.imgur.com/HKtNptv.png" width="500" height="1000" />
+
+# Task 3: How many files have been encrypted by the the ransomware deployment?
+

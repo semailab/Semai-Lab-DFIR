@@ -77,7 +77,7 @@ Firstly, however, in order to get ELK stack working, they must be configured in 
 
 After setting up apt to allow TLS/SSL downloads from external repositories, I was able to use APT to install the first of the stack, Elasticsearch by downloading its GPG (GnuPrivacyGuard) key and its repository to the machine.
 
-<img src = "https://i.imgur.com/mXC5m1C.png" width="500" height="350" />
+<img src = "https://i.imgur.com/mXC5m1C.png" width="1000" height="200" />
 
 In order to get elasticsearch running, I'll need to configure a couple of things in the YAML configuration file that came with the service using vim. I'll need to set up a name for the cluster, which I ended up naming after the entire lab's name, and also set the ip and port of the network host and http port (NOTE: discovery.type is not included in the YAML file by default and must be manually added.
 
